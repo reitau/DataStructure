@@ -47,6 +47,7 @@ public class Tester {
     Assert.assertEquals(0, node_4.getHeight());
 
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(4, tree.size());
   }
 
 
@@ -77,6 +78,7 @@ public class Tester {
     Assert.assertEquals(0, node_3.getHeight());
 
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(3, tree.size());
   }
 
   @Test
@@ -106,6 +108,7 @@ public class Tester {
     Assert.assertEquals(0, node_3.getHeight());
 
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(3, tree.size());
   }
 
   @Test
@@ -135,6 +138,7 @@ public class Tester {
     Assert.assertEquals(0, node_3.getHeight());
 
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(3, tree.size());
   }
 
   @Test
@@ -164,6 +168,7 @@ public class Tester {
     Assert.assertEquals(0, node_3.getHeight());
 
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(3, tree.size());
   }
 
   @Test
@@ -183,15 +188,19 @@ public class Tester {
     Assert.assertEquals(2, node_2.getKey());
     Assert.assertEquals(3, node_3.getKey());
 
+    Assert.assertEquals(3, tree.size());
+
     rebalance_operation = tree.delete(node_1.getKey());
     Assert.assertFalse(node_2.getLeft().isRealNode());
     Assert.assertEquals(0, rebalance_operation);
+    Assert.assertEquals(2, tree.size());
 
     rebalance_operation = tree.delete(node_3.getKey());
     Assert.assertFalse(node_2.getRight().isRealNode());
     Assert.assertEquals(1, rebalance_operation);
 
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(1, tree.size());
   }
 
   @Test
@@ -211,6 +220,8 @@ public class Tester {
     IAVLNode node_3 = node_4.getLeft();
     IAVLNode node_5 = node_4.getRight();
 
+    Assert.assertEquals(5, tree.size());
+
     Assert.assertEquals(1, node_1.getKey());
     Assert.assertEquals(2, node_2.getKey());
     Assert.assertEquals(3, node_3.getKey());
@@ -227,6 +238,7 @@ public class Tester {
     Assert.assertEquals(3, rebalance_operation);
 
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(4, tree.size());
   }
 
   @Test
@@ -246,6 +258,8 @@ public class Tester {
     IAVLNode node_3 = node_2.getRight();
     IAVLNode node_1 = node_2.getLeft();
 
+    Assert.assertEquals(5, tree.size());
+
     Assert.assertEquals(1, node_1.getKey());
     Assert.assertEquals(2, node_2.getKey());
     Assert.assertEquals(3, node_3.getKey());
@@ -262,6 +276,7 @@ public class Tester {
     Assert.assertEquals(3, rebalance_operation);
 
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(4, tree.size());
   }
 
   @Test
@@ -278,6 +293,8 @@ public class Tester {
     IAVLNode node_1 = node_2.getLeft();
     IAVLNode node_4 = node_2.getRight();
     IAVLNode node_5 = node_4.getRight();
+
+    Assert.assertEquals(4, tree.size());
 
     Assert.assertEquals(1, node_1.getKey());
     Assert.assertEquals(2, node_2.getKey());
@@ -297,6 +314,7 @@ public class Tester {
     Assert.assertEquals(3, rebalance_operation);
 
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(3, tree.size());
   }
 
   @Test
@@ -319,6 +337,8 @@ public class Tester {
     Assert.assertEquals(4, node_4.getKey());
     Assert.assertEquals(3, node_3.getKey());
 
+    Assert.assertEquals(4, tree.size());
+
     Assert.assertEquals(2, node_2.getHeight());
     Assert.assertEquals(0, node_1.getHeight());
     Assert.assertEquals(1, node_4.getHeight());
@@ -334,6 +354,7 @@ public class Tester {
     Assert.assertEquals(6, rebalance_operation);
 
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(3, tree.size());
   }
 
   @Test
@@ -352,6 +373,8 @@ public class Tester {
     IAVLNode node_4 = node_2.getRight();
     IAVLNode node_3 = node_4.getLeft();
     IAVLNode node_5 = node_4.getRight();
+
+    Assert.assertEquals(5, tree.size());
 
     Assert.assertEquals(1, node_1.getKey());
     Assert.assertEquals(2, node_2.getKey());
@@ -375,6 +398,7 @@ public class Tester {
     Assert.assertEquals(0, rebalance_operation);
 
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(4, tree.size());
   }
 
   @Test
@@ -400,6 +424,8 @@ public class Tester {
     Assert.assertEquals(3, node_3.getKey());
     Assert.assertEquals(5, node_5.getKey());
 
+    Assert.assertEquals(5, tree.size());
+
     Assert.assertEquals(2, node_2.getHeight());
     Assert.assertEquals(0, node_1.getHeight());
     Assert.assertEquals(1, node_4.getHeight());
@@ -409,24 +435,28 @@ public class Tester {
     Assert.assertEquals(3, tree.getRoot().getKey());
     Assert.assertEquals(0, rebalance_operation);
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(4, tree.size());
 
     rebalance_operation = tree.delete(node_3.getKey());
     Assert.assertEquals(null, tree.search(3));
     Assert.assertEquals(4, tree.getRoot().getKey());
     Assert.assertEquals(1, rebalance_operation);
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(3, tree.size());
 
     rebalance_operation = tree.delete(node_4.getKey());
     Assert.assertEquals(null, tree.search(4));
     Assert.assertEquals(5, tree.getRoot().getKey());
     Assert.assertEquals(0, rebalance_operation);
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(2, tree.size());
 
     rebalance_operation = tree.delete(node_5.getKey());
     Assert.assertEquals(null, tree.search(5));
     Assert.assertEquals(1, tree.getRoot().getKey());
     Assert.assertEquals(0, rebalance_operation);
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(1, tree.size());
 
     rebalance_operation = tree.delete(node_1.getKey());
     Assert.assertEquals(null, tree.search(1));
@@ -434,6 +464,7 @@ public class Tester {
     Assert.assertEquals(0, rebalance_operation);
     Assert.assertTrue(isBSTTree(tree));
 
+    Assert.assertEquals(0, tree.size());
     Assert.assertTrue(tree.empty());
   }
 
@@ -447,45 +478,55 @@ public class Tester {
     Assert.assertEquals("2", tree.max());
     Assert.assertEquals("2", tree.min());
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(1, tree.size());
 
     tree.insert(3, "3");
     Assert.assertEquals("3", tree.max());
     Assert.assertEquals("2", tree.min());
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(2, tree.size());
 
     tree.insert(1, "1");
     Assert.assertEquals("3", tree.max());
     Assert.assertEquals("1", tree.min());
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(3, tree.size());
 
     tree.insert(4, "4");
     Assert.assertEquals("4", tree.max());
     Assert.assertEquals("1", tree.min());
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(4, tree.size());
+
 
     tree.delete(2);
     Assert.assertEquals("4", tree.max());
     Assert.assertEquals("1", tree.min());
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(3, tree.size());
 
     tree.delete(2);
     Assert.assertEquals("4", tree.max());
     Assert.assertEquals("1", tree.min());
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(3, tree.size());
 
     tree.delete(1);
     Assert.assertEquals("4", tree.max());
     Assert.assertEquals("3", tree.min());
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(2, tree.size());
 
     tree.delete(4);
     Assert.assertEquals("3", tree.max());
     Assert.assertEquals("3", tree.min());
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(1, tree.size());
 
     tree.delete(3);
     Assert.assertNull(null, tree.max());
     Assert.assertNull(null, tree.min());
+    Assert.assertEquals(0, tree.size());
   }
 
   @Test
@@ -524,6 +565,7 @@ public class Tester {
     Assert.assertEquals(12, node_10.getRight().getKey());
 
     Assert.assertTrue(isBSTTree(smaller));
+    Assert.assertEquals(9, smaller.size());
   }
 
   @Test
@@ -563,6 +605,7 @@ public class Tester {
     Assert.assertEquals(12, node_10.getRight().getKey());
 
     Assert.assertTrue(isBSTTree(bigger));
+    Assert.assertEquals(9, bigger.size());
   }
 
   @Test
@@ -601,6 +644,7 @@ public class Tester {
     Assert.assertEquals(14, node_12.getRight().getKey());
 
     Assert.assertTrue(isBSTTree(smaller));
+    Assert.assertEquals(9, smaller.size());
   }
 
   @Test
@@ -640,6 +684,7 @@ public class Tester {
     Assert.assertEquals(14, node_12.getRight().getKey());
 
     Assert.assertTrue(isBSTTree(bigger));
+    Assert.assertEquals(9, bigger.size());
   }
 
   @Test
@@ -670,6 +715,7 @@ public class Tester {
     Assert.assertEquals(3, node_2.getRight().getKey());
 
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(4, tree.size());
   }
 
   @Test
@@ -700,6 +746,7 @@ public class Tester {
     Assert.assertEquals(3, node_2.getRight().getKey());
 
     Assert.assertTrue(isBSTTree(tree));
+    Assert.assertEquals(4, tree.size());
   }
 
   @Test
@@ -719,6 +766,14 @@ public class Tester {
 
     Assert.assertTrue(Integer.parseInt(trees[0].max()) < x_key);
     Assert.assertTrue(Integer.parseInt(trees[1].min()) > x_key);
+
+    Assert.assertEquals(12, trees[0].size()); // 0 - 11
+    Assert.assertEquals(50 - 13, trees[1].size()); // 13 - 50
+
+    Assert.assertEquals("11", trees[0].max());
+    Assert.assertEquals("0", trees[0].min());
+    Assert.assertEquals("49", trees[1].max());
+    Assert.assertEquals("13", trees[1].min());
 
     Assert.assertNull(trees[0].search(x_key));
     Assert.assertNull(trees[1].search(x_key));
@@ -742,6 +797,14 @@ public class Tester {
     Assert.assertTrue(Integer.parseInt(trees[0].max()) < x_key);
     Assert.assertTrue(trees[1].empty());
 
+    Assert.assertEquals(49, trees[0].size()); // 0 - 48
+    Assert.assertEquals(0, trees[1].size()); // empty
+
+    Assert.assertEquals("48", trees[0].max());
+    Assert.assertEquals("0", trees[0].min());
+    Assert.assertNull(trees[1].max());
+    Assert.assertNull(trees[1].min());
+
     Assert.assertNull(trees[0].search(x_key));
     Assert.assertNull(trees[1].search(x_key));
   }
@@ -763,6 +826,14 @@ public class Tester {
 
     Assert.assertTrue(Integer.parseInt(trees[0].max()) < x_key);
     Assert.assertTrue(Integer.parseInt(trees[1].min()) > x_key);
+
+    Assert.assertEquals(1, trees[0].size()); // only 0
+    Assert.assertEquals(48, trees[1].size()); // 2 - 49
+
+    Assert.assertEquals("0", trees[0].max());
+    Assert.assertEquals("0", trees[0].min());
+    Assert.assertEquals("49", trees[1].max());
+    Assert.assertEquals("2", trees[1].min());
 
     Assert.assertNull(trees[0].search(x_key));
     Assert.assertNull(trees[1].search(x_key));
