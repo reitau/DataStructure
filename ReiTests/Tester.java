@@ -21,6 +21,22 @@ public class Tester {
     return inner_isBSTTree(tree.getRoot(), Integer.MAX_VALUE, -1);
   }
 
+  private boolean inner_isAVLTree(IAVLNode node) {
+    if(!node.isRealNode())
+      return true;
+    int height_diff = node.getLeft().getHeight() - node.getRight().getHeight();
+    if(height_diff <= 1 && height_diff >= -1)
+      return inner_isAVLTree(node.getRight()) && inner_isAVLTree(node.getLeft());
+
+    return false;
+  }
+
+  private boolean isAVLTree(AVLTree tree) {
+    if(tree.empty())
+      return true;
+    return inner_isAVLTree(tree.getRoot());
+  }
+
   @Test
   public void testHigh()  throws Exception {
     AVLTree tree = new AVLTree();
@@ -757,12 +773,15 @@ public class Tester {
     for(int i=0; i < 50; i++) {
       tree.insert(i, Integer.toString(i));
       Assert.assertTrue(isBSTTree(tree));
+      Assert.assertTrue(isAVLTree(tree));
     }
 
     AVLTree[] trees = tree.split(x_key);
     Assert.assertEquals(2, trees.length);
     Assert.assertTrue(isBSTTree(trees[0]));
+    Assert.assertTrue(isAVLTree(trees[0]));
     Assert.assertTrue(isBSTTree(trees[1]));
+    Assert.assertTrue(isAVLTree(trees[1]));
 
     Assert.assertTrue(Integer.parseInt(trees[0].max()) < x_key);
     Assert.assertTrue(Integer.parseInt(trees[1].min()) > x_key);
@@ -787,12 +806,15 @@ public class Tester {
     for(int i=0; i < 50; i++) {
       tree.insert(i, Integer.toString(i));
       Assert.assertTrue(isBSTTree(tree));
+      Assert.assertTrue(isAVLTree(tree));
     }
 
     AVLTree[] trees = tree.split(x_key);
     Assert.assertEquals(2, trees.length);
     Assert.assertTrue(isBSTTree(trees[0]));
+    Assert.assertTrue(isAVLTree(trees[0]));
     Assert.assertTrue(isBSTTree(trees[1]));
+    Assert.assertTrue(isAVLTree(trees[1]));
 
     Assert.assertTrue(Integer.parseInt(trees[0].max()) < x_key);
     Assert.assertTrue(trees[1].empty());
@@ -817,12 +839,15 @@ public class Tester {
     for(int i=0; i < 50; i++) {
       tree.insert(i, Integer.toString(i));
       Assert.assertTrue(isBSTTree(tree));
+      Assert.assertTrue(isAVLTree(tree));
     }
 
     AVLTree[] trees = tree.split(x_key);
     Assert.assertEquals(2, trees.length);
     Assert.assertTrue(isBSTTree(trees[0]));
+    Assert.assertTrue(isAVLTree(trees[0]));
     Assert.assertTrue(isBSTTree(trees[1]));
+    Assert.assertTrue(isAVLTree(trees[1]));
 
     Assert.assertTrue(Integer.parseInt(trees[0].max()) < x_key);
     Assert.assertTrue(Integer.parseInt(trees[1].min()) > x_key);
